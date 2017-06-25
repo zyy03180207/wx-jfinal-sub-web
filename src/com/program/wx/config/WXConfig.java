@@ -11,6 +11,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.program.wx.controller.IndexController;
 
 public class WXConfig extends JFinalConfig {
 
@@ -25,7 +26,7 @@ public class WXConfig extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		// TODO Auto-generated method stub
-		
+		me.add("/", IndexController.class, "/pages");
 	}
 
 	public static C3p0Plugin createDruidPlugin() {
