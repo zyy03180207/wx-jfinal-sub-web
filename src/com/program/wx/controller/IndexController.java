@@ -51,4 +51,8 @@ public class IndexController extends BaseController {
 	public void cardList() {
 		renderJsp("card_list.jsp");
 	}
+	
+	public void cardListMain() {
+		renderJsp("card_list_main.jsp");
+	}
 }

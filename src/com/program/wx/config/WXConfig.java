@@ -12,6 +12,7 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.program.wx.controller.IndexController;
+import com.program.wx.controller.WeixinMsgController;
 
 public class WXConfig extends JFinalConfig {
 
@@ -27,6 +28,7 @@ public class WXConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		// TODO Auto-generated method stub
 		me.add("/", IndexController.class, "/pages");
+		me.add("/msg", WeixinMsgController.class);
 	}
 
 	public static C3p0Plugin createDruidPlugin() {
