@@ -2,6 +2,7 @@ package com.program.wx.controller;
 
 import java.util.Map;
 
+import com.jfinal.core.ActionKey;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.StrKit;
 import com.program.wx.util.XMLParse;
@@ -47,7 +48,7 @@ public class IndexController extends BaseController {
 		}
 	}
 
-	
+	@ActionKey(value = "cardlists")
 	public void cardList() {
 		renderJsp("card_list.jsp");
 	}

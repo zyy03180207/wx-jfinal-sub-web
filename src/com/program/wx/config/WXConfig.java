@@ -11,6 +11,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.jfinal.weixin.sdk.api.ApiConfigKit;
 import com.program.wx.controller.IndexController;
 import com.program.wx.controller.WeixinMsgController;
 
@@ -22,6 +23,7 @@ public class WXConfig extends JFinalConfig {
 		PropKit.use("little_config.txt");
 		me.setViewType(ViewType.JSP);
 		me.setDevMode(true);
+		ApiConfigKit.setDevMode(true);
 	}
 
 	@Override

@@ -30,6 +30,8 @@ import com.jfinal.weixin.sdk.msg.in.event.InVerifyFailEvent;
 import com.jfinal.weixin.sdk.msg.in.event.InVerifySuccessEvent;
 import com.jfinal.weixin.sdk.msg.in.event.InWifiEvent;
 import com.jfinal.weixin.sdk.msg.in.speech_recognition.InSpeechRecognitionResults;
+import com.jfinal.weixin.sdk.msg.out.OutMsg;
+import com.jfinal.weixin.sdk.msg.out.OutTextMsg;
 
 public class WeixinMsgController extends MsgController {
 
@@ -39,24 +41,28 @@ public class WeixinMsgController extends MsgController {
 		ApiConfig ac = new ApiConfig();
 		 
 	    // 配置微信 API 相关常量
-	    ac.setToken("zhangyangyang");
-	    ac.setAppId("wxc563397907c85f4d");
-	    ac.setAppSecret("fa35e99e165b78fd1af86629d54c5b79");
+	    ac.setToken(PropKit.get("token"));
+	    ac.setAppId(PropKit.get("appId"));
+	    ac.setAppSecret(PropKit.get("appSecret"));
 	 
 	    /**
 	     *  是否对消息进行加密，对应于微信平台的消息加解密方式：
 	     *  1：true进行加密且必须配置 encodingAesKey
 	     *  2：false采用明文模式，同时也支持混合模式
 	     */
-	    ac.setEncryptMessage(true);
-	    ac.setEncodingAesKey("FLzUsYfBZtGF6sDws3sdfke9uCPQV8lgXGk0Up1pcrP");
+	    ac.setEncryptMessage(PropKit.getBoolean("encryptMessage"));
+	    ac.setEncodingAesKey(PropKit.get("encodingAesKey"));
 		return ac;
 	}
 
 	@Override
 	protected void processInTextMsg(InTextMsg inTextMsg) {
 		// TODO Auto-generated method stub
-		
+		String fromUserName = inTextMsg.getFromUserName();
+		String toUserName = inTextMsg.getToUserName();
+		OutTextMsg outTextMsg = new OutTextMsg(inTextMsg);
+		outTextMsg.setContent("你好!感谢您关注我们");
+		render(outTextMsg);
 	}
 
 	@Override
