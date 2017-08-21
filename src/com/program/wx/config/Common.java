@@ -22,7 +22,7 @@ public class Common {
 	//微信支付签名
 	public static String TICKET = "";
 	
-	public static final int PERIOD = 3600*1000;
+	public static final int PERIOD = 30*1000;
 	//设置单聊超时时间
 	public static final Long SINGLEOUT = 60*1000*15l;	//15分钟
 	//统一回复消息

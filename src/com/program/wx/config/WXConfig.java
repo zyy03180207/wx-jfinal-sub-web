@@ -1,5 +1,7 @@
 package com.program.wx.config;
 
+import java.util.Timer;
+
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -10,10 +12,20 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.redis.Redis;
 import com.jfinal.render.ViewType;
+import com.jfinal.weixin.sdk.api.AccessToken;
+import com.jfinal.weixin.sdk.api.AccessTokenApi;
 import com.jfinal.weixin.sdk.api.ApiConfigKit;
+import com.jfinal.weixin.sdk.api.MenuApi;
+import com.jfinal.weixin.sdk.cache.RedisAccessTokenCache;
+import com.jfinal.weixin.sdk.jfinal.ApiController;
 import com.program.wx.controller.IndexController;
+import com.program.wx.controller.WeixinApiController;
 import com.program.wx.controller.WeixinMsgController;
+import com.program.wx.task.AccessTask;
+import com.program.wx.util.WeixinUtil;
+import com.sun.jmx.snmp.tasks.Task;
 
 public class WXConfig extends JFinalConfig {
 
@@ -31,6 +43,7 @@ public class WXConfig extends JFinalConfig {
 		// TODO Auto-generated method stub
 		me.add("/", IndexController.class, "/pages");
 		me.add("/msg", WeixinMsgController.class);
+		me.add("/api", WeixinApiController.class);
 	}
 
 	public static C3p0Plugin createDruidPlugin() {
@@ -61,7 +74,11 @@ public class WXConfig extends JFinalConfig {
 	@Override
 	public void configHandler(Handlers me) {
 		// TODO Auto-generated method stub
-		
 	}
 
+	@Override
+	public void afterJFinalStart() {
+		// TODO Auto-generated method stub
+		super.afterJFinalStart();
+	}
 }

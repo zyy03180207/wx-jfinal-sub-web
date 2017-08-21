@@ -5,4 +5,8 @@ password = zyy0318@:0207
 
 showsql = true
 
-FILE_URL=C://
+token=zhangyangyang
+appId=wxc563397907c85f4d
+appSecret=fa35e99e165b78fd1af86629d54c5b79
+encryptMessage=false
+encodingAesKey=FLzUsYfBZtGF6sDws3sdfke9uCPQV8lgXGk0Up1pcrP
